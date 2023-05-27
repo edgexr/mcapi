@@ -13,7 +13,7 @@ info:
   version: "2.0"
 servers:
 - description: localhost server
-  url: http://localhost:9900
+  url: https://console.cloud.edgexr.org
 tags:
 - description: Authentication is done by a user name or email plus a password. The
     login function returns a JSON Web Token (JWT) once authenticated, that should
@@ -10273,6 +10273,12 @@ components:
           type: array
         federation_config:
           $ref: '#/components/schemas/EdgeprotoFederationConfig'
+        fields:
+          description: Fields are used for the Update API to specify which fields
+            to apply
+          items:
+            type: string
+          type: array
         flavor:
           $ref: '#/components/schemas/EdgeprotoFlavorKey'
         gpu_config:
@@ -10428,6 +10434,12 @@ components:
           type: boolean
         errors:
           description: Any errors encountered while making changes to the Cloudlet
+          items:
+            type: string
+          type: array
+        fields:
+          description: Fields are used for the Update API to specify which fields
+            to apply
           items:
             type: string
           type: array
@@ -15105,6 +15117,8 @@ x-tagGroups:
   - OperatorUsage
   - AlertReceiver
   - Network
+  - FederationGuest
+  - FederationHost
 - name: Developer API
   tags:
   - ClusterInst
@@ -15121,8 +15135,4 @@ x-tagGroups:
   - Events
   - DeveloperUsage
   - AlertReceiver
-- name: Federation API
-  tags:
   - Federation
-  - FederationGuest
-  - FederationHost
