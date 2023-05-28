@@ -12,7 +12,7 @@ info:
   title: Edge Cloud Master Controller API Documentation
   version: "2.0"
 servers:
-- description: localhost server
+- description: EdgeCloud platform
   url: https://console.cloud.edgexr.org
 tags:
 - description: Authentication is done by a user name or email plus a password. The
@@ -6077,8 +6077,8 @@ paths:
       - Federation
   /api/v1/auth/federation/consumer/image/show:
     post:
-      description: Show Images onboarded by developers
-      operationId: ShowFedGuestImage
+      description: Show images on partner federation
+      operationId: ShowGuestImage
       requestBody:
         content:
           application/json:
@@ -6103,9 +6103,9 @@ paths:
           description: Forbidden
       security:
       - bearerAuth: []
-      summary: ShowFedGuestImage
+      summary: ShowGuestImage
       tags:
-      - FederationGuest
+      - Federation
   /api/v1/auth/federation/consumer/setapikey:
     post:
       description: Set Partner Federation API Key
@@ -6142,8 +6142,8 @@ paths:
       - FederationGuest
   /api/v1/auth/federation/consumer/show:
     post:
-      description: Show Federation Guest
-      operationId: ShowFederationGuest
+      description: Show federations for App deployment
+      operationId: ShowFederation
       requestBody:
         content:
           application/json:
@@ -6168,9 +6168,9 @@ paths:
           description: Forbidden
       security:
       - bearerAuth: []
-      summary: ShowFederationGuest
+      summary: ShowFederation
       tags:
-      - FederationGuest
+      - Federation
   /api/v1/auth/federation/consumer/update:
     post:
       description: Update Federation Guest
@@ -10273,12 +10273,6 @@ components:
           type: array
         federation_config:
           $ref: '#/components/schemas/EdgeprotoFederationConfig'
-        fields:
-          description: Fields are used for the Update API to specify which fields
-            to apply
-          items:
-            type: string
-          type: array
         flavor:
           $ref: '#/components/schemas/EdgeprotoFlavorKey'
         gpu_config:
