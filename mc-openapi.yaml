@@ -8972,6 +8972,8 @@ paths:
                 $ref: '#/components/schemas/OrmapiResult'
           description: Bad Request
       summary: Login
+      tags:
+      - Security
   /api/v1/passwordreset:
     post:
       description: Reset the password using the token from the password reset email
@@ -9940,6 +9942,12 @@ components:
           type: integer
         fed_key:
           $ref: '#/components/schemas/EdgeprotoFedAppInstKey'
+        fields:
+          description: Fields are used for the Update API to specify which fields
+            to apply
+          items:
+            type: string
+          type: array
         flavor:
           $ref: '#/components/schemas/EdgeprotoFlavorKey'
         force_update:
@@ -10273,6 +10281,12 @@ components:
           type: array
         federation_config:
           $ref: '#/components/schemas/EdgeprotoFederationConfig'
+        fields:
+          description: Fields are used for the Update API to specify which fields
+            to apply
+          items:
+            type: string
+          type: array
         flavor:
           $ref: '#/components/schemas/EdgeprotoFlavorKey'
         gpu_config:
@@ -10428,12 +10442,6 @@ components:
           type: boolean
         errors:
           description: Any errors encountered while making changes to the Cloudlet
-          items:
-            type: string
-          type: array
-        fields:
-          description: Fields are used for the Update API to specify which fields
-            to apply
           items:
             type: string
           type: array
@@ -13071,7 +13079,11 @@ components:
           description: Lock new accounts (must be unlocked by admin)
           type: boolean
         LogAllShowApis:
-          description: Log all show/GET APIs
+          description: Log all show/GET APIs, including noisy ones you likely don't
+            need to see, like Login, audit/event/terms show, ShowAlerts, etc.
+          type: boolean
+        LogShowApis:
+          description: Log most show/GET APIs for debugging
           type: boolean
         LogShowUrl:
           description: Log specific API url (may be substring of entire URL)
